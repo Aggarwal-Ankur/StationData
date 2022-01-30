@@ -5,27 +5,32 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.aggarwalankur.stationdata.R
 import com.aggarwalankur.stationdata.databinding.FragmentStationListBinding
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class StationListFragment : Fragment() {
 
     private lateinit var viewDataBinding: FragmentStationListBinding
 
+    private val viewModel by viewModels<StationsViewModel>()
+
+    private lateinit var listAdapter: DeparturesAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         viewDataBinding = FragmentStationListBinding.inflate(inflater, container, false)
             .apply {
-                //viewmodel = viewModel
+                viewmodel = viewModel
             }
 
-        viewDataBinding.button.setOnClickListener() {
-            viewDataBinding.button.text = getString(R.string.ok)
-        }
+
         return viewDataBinding.root
     }
 
@@ -34,5 +39,26 @@ class StationListFragment : Fragment() {
 
         // Set the lifecycle owner to the lifecycle of the view
         viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
+
+        setupListAdapter()
+        setupPullToRefresh()
+    }
+
+    private fun setupListAdapter() {
+        val viewModel = viewDataBinding.viewmodel
+        if (viewModel != null) {
+            listAdapter = DeparturesAdapter(viewModel)
+            viewDataBinding.list.adapter = listAdapter
+        } else {
+            Timber.w("ViewModel not initialized when attempting to set up adapter.")
+        }
+    }
+
+    private fun setupPullToRefresh() {
+        val viewModel = viewDataBinding.viewmodel
+        viewDataBinding.swipeLayout.setOnRefreshListener {
+            viewDataBinding.swipeLayout.isRefreshing = false
+            viewModel?.refresh()
+        }
     }
 }
