@@ -1,7 +1,7 @@
 package com.aggarwalankur.stationdata.data
 
 import com.aggarwalankur.stationdata.BuildConfig
-import com.aggarwalankur.stationdata.network.Departure
+import com.aggarwalankur.stationdata.network.dto.Departure
 import com.aggarwalankur.stationdata.network.StationApiService
 
 class StationRepositoryImpl (

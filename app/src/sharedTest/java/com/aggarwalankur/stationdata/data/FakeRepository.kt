@@ -1,7 +1,7 @@
 package com.aggarwalankur.stationdata.data
 
-import com.aggarwalankur.stationdata.network.DateTime
-import com.aggarwalankur.stationdata.network.Departure
+import com.aggarwalankur.stationdata.network.dto.DateTime
+import com.aggarwalankur.stationdata.network.dto.Departure
 import kotlinx.coroutines.delay
 import java.lang.Exception
 import javax.inject.Inject

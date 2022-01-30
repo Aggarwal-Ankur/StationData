@@ -2,7 +2,7 @@ package com.aggarwalankur.stationdata.view.stationlist
 
 import androidx.lifecycle.*
 import com.aggarwalankur.stationdata.data.StationRepository
-import com.aggarwalankur.stationdata.network.Departure
+import com.aggarwalankur.stationdata.network.dto.Departure
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber

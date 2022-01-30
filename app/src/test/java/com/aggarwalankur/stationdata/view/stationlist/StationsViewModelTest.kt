@@ -4,8 +4,8 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.aggarwalankur.stationdata.MainCoroutineRule
 import com.aggarwalankur.stationdata.data.FakeRepository
 import com.aggarwalankur.stationdata.getOrAwaitValue
-import com.aggarwalankur.stationdata.network.DateTime
-import com.aggarwalankur.stationdata.network.Departure
+import com.aggarwalankur.stationdata.network.dto.DateTime
+import com.aggarwalankur.stationdata.network.dto.Departure
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.After
