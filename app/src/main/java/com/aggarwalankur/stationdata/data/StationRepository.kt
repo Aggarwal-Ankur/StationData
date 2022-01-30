@@ -1,11 +1,7 @@
 package com.aggarwalankur.stationdata.data
 
-import com.aggarwalankur.stationdata.BuildConfig
-import com.aggarwalankur.stationdata.network.StationApiService
-import javax.inject.Inject
+import com.aggarwalankur.stationdata.network.Departure
 
-class StationRepository @Inject constructor(private val service: StationApiService) {
-    suspend fun getStationDataFromApi () {
-        service.searchGithubUsers(BuildConfig.API_KEY)
-    }
+interface StationRepository {
+    suspend fun getStationDataFromApi () : List<Departure>
 }
