@@ -1,4 +1,4 @@
-package com.aggarwalankur.stationdata.network
+package com.aggarwalankur.stationdata.network.dto
 
 import com.google.gson.annotations.SerializedName
 import java.text.SimpleDateFormat
