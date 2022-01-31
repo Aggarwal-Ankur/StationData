@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.aggarwalankur.stationdata.R
 import com.aggarwalankur.stationdata.databinding.FragmentStationListBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,7 +31,6 @@ class StationListFragment : Fragment() {
                 viewmodel = viewModel
             }
 
-
         return viewDataBinding.root
     }
 
@@ -39,6 +39,9 @@ class StationListFragment : Fragment() {
 
         // Set the lifecycle owner to the lifecycle of the view
         viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
+
+        val decoration = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
+        viewDataBinding.list.addItemDecoration(decoration)
 
         setupListAdapter()
         setupPullToRefresh()
